@@ -78,9 +78,9 @@
     \item \textbf{Casi Particolari (X, Y Indipendenti)}: $X\perp Y\Rightarrow f_{x,Y}(x,y)=f_{X}(x)f_{Y}(y)\wedge F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
     \item \textbf{Teo. Bayes nel Continuo e Situazioni Ibride}:
     \begin{itemize}
-        \item $X,Y$ continue: $f_{X|Y}(x|y)={f_{X, Y}(x, y)}/{f_Y(y)}={f_X(x) f_{Y|X}(y|x)}/{\int_{x^{'}} f_X(x^{'})  f_{Y|X}(y|x^{'}) d x^{'}}$.
-        \item $X$ discreta, $Y$ continua: $p_{X|Y}(x|y)={p_X(x) f_{Y|X}(y|x)}/{\sum_{x^{'}} p_X(x^{'})  f_{Y|X}(y|x^{'})}$.
-        \item $X$ continua, $Y$ discreta: $f_{X|Y}(x|y)={f_X(x)  p_{Y|X}(y|x^{'})}/{\int_{x^{'}} f_X(x^{'})  p_{Y|X}(y|x^{'}) d x^{'}}$.
+        \item $X,Y$ continue: $f_{X|Y}(x,y)=f_{Y|X}(y|x)f_{X}(x)/f_{Y}(y)$.
+        \item $X$ discreta, $Y$ continua: $p_{X|Y}(x|y)=f_{Y|X}(y|x)p_{X}(x)/f_{Y}(y)$.
+        \item $X$ continua, $Y$ discreta: $f_{X|Y}(x|y)=p_{Y|X}(y|x)f_{X}(x)/p_{Y}(y)$.
     \end{itemize}
     \item \textbf{Somma di Variabili Aleatorie Continue}: Sia $Z=X+Y$:
     \begin{itemize}

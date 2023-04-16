@@ -1,0 +1,17 @@
+name: Compila Formulario_IeS
+on: [push, workflow_dispatch]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clona repo.
+        uses: actions/checkout@v3
+      - name: Compila formulario.
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+      - name: Carica file compilato.
+        uses: actions/upload-artifact@v3
+        with:
+          name: Formulario_IeS
+          path: main.pdf

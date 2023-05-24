@@ -228,5 +228,18 @@
               \end{itemize}
     \end{itemize}
 
+    \textbf{\underline{Stima Bayesiana}}
+    \begin{itemize}
+        \item A partire da una v.a. $X$, che rappresenta l'esito di una misura, si vuole stimare, mediante la regola di Bayes, $\Theta$ (v.a.) quantità da misurare. $P_{X|\Theta}(x, \theta)/f_{X|\Theta}(x, \theta)\rightarrow P_{\Theta|X}(\theta, X)/f_{\Theta|X}(\theta, X)$.
+        \item Stimatore "M.A.P.":
+              \begin{itemize}
+                  \item $\hat{\Theta}_{MAP}=\begin{cases}
+                                \arg\max{\Theta}P_{\Theta|X}(\theta|X) & discr. \\
+                                \arg\max{\Theta}f_{\Theta|X}(\theta|X) & cont.
+                            \end{cases}$
+                  \item Alternativamente, se $\Theta$ v.a. cont., $E[\Theta|X=x]=\int_{\mathbb{R}}\theta f_{\Theta|X}(\theta|x)d\theta$.
+              \end{itemize}
+    \end{itemize}
+
 \end{multicols*}
 \end{document}

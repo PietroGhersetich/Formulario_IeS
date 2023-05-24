@@ -23,7 +23,7 @@
         \item \textbf{Teo. Prob. Totali}: $P(\bigcup_{i=1}^{n}P(A_{i}))=\sum_{i=1}^{n}P(A_{i})$; $A_{1},...,A_{n}$ eventi indipendenti.
         \item \textbf{Prob. Condizionate}: $P(A|B)={P(A\cap B)}/{P(B)}$.
         \item \textbf{Teo. Prob. Totali (Partizioni)}: $P(A)=\sum_{i=1}^{n}P(B_{i})P(A|B_{i})$, $B_{1},...,B_{n}$ partizioni di $\Omega$.
-        \item \textbf{Teo. Bayes}: $P(A_{i}|B)=P(B|A_{i})P(A_{i})/(\sum_{j=1}^{n}P(B|A_{j})P(A_j))=P(B)$, $A_{i}\in A_{1},...,A_{n}$ partizioni di $\Omega$.
+        \item \textbf{Teo. Bayes}: $P(A_{i}|B)=P(B|A_{i})P(A_{i})/(\sum_{j=1}^{n}P(B|A_{j})P(A_j)=P(B))$, $A_{i}\in A_{1},...,A_{n}$ partizioni di $\Omega$.
         \item \textbf{Note sui Complementari}: $P(A)=1-P(A^{C})$; $P(A|B)=1-P(A^{C}|B)$.
         \item \textbf{Indipendenza}: $A_{1},...,A_{n}$ eventi indipendenti sse $P(\bigcap_{i=1}^{n}P(A_{i}))=\prod_{i=1}^{n}P(A_{i})$.
         \item \textbf{Note sull'Indipendenza}: $P(A|B)=P(A)$ sse $A, B$ eventi indipendenti; indipendenza condizionata $\nleftrightarrow$ indipendenza incondizionata.
@@ -75,7 +75,7 @@
     \begin{itemize}
         \item \textbf{Marginalizzazione}: $f_{Y}(y)=\int_{x}f_{X,Y}(x,y)dx=\int_{y}f_{Y|X}(y|x)f_{X}(x)dx$.
         \item \textbf{Valore Atteso}: data $g(x,y)$ deterministica $E[g(X,Y)]=\iint_{\mathbb{R}}g(X,Y)f_{X,Y}(x,y)dxdy$.
-        \item \textbf{Casi Particolari (X, Y Indipendenti)}: $X\perp Y\Rightarrow f_{x,Y}(x,y)=f_{X}(x)f_{Y}(y)\wedge F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
+        \item \textbf{Casi Particolari (X, Y Indipendenti)}: $X\perp Y\Rightarrow f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\wedge F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
         \item \textbf{Teo. Bayes nel Continuo e Situazioni Ibride}:
               \begin{itemize}
                   \item $X,Y$ continue: $f_{X|Y}(x,y)=f_{Y|X}(y|x)f_{X}(x)/f_{Y}(y)$.
@@ -85,7 +85,7 @@
         \item \textbf{Somma di Variabili Aleatorie Continue}: Sia $Z=X+Y$:
               \begin{itemize}
                   \item $X\perp Y\Longleftrightarrow f_{Z,X}(z,x)=f_X(x)f_Y(z-x)$.
-                  \item $f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx$. (Convoluzione.)
+                  \item $f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx$. \textbf{Convoluzione.}
                   \item $F_Z(z)=F_{X+Y}(z)=\int_{-\infty}^{+\infty}F_x(z-y)f_Y(y)dy$.
               \end{itemize}
     \end{itemize}
@@ -170,10 +170,10 @@
     \end{itemize}
     \textbf{\underline{Calcolo di una Funzione di V.A.}}
     \begin{itemize}
-        \item Discr. $p_{Y}(y)=P(g(X)=y)=\sum_{x|g(x)=y}p_{X}(x)$.
-        \item Cont. (Cumulata) $F_{Y}(y)=P(g(X)\leq y)\implies f_{Y}(y)=dF_{y}(y)/dy$.
-        \item Cont. ($g(X)$ Lineare) $Y=\alpha X+\beta\implies f_{Y}(y)=\frac{1}{|\alpha|}f_{X}(\frac{x-\beta}{\alpha})$.
-        \item Cont. ($g(X)$ Monotona) $Y=g(X)\implies f_{Y}(y)=f_{X}(g^{-1}(y))/\left|\frac{d}{dx}g(g^{-1}(y))\right|$.
+        \item \textbf{Discr.} $p_{Y}(y)=P(g(X)=y)=\sum_{x|g(x)=y}p_{X}(x)$.
+        \item \textbf{Cont. (Cumulata)} $F_{Y}(y)=P(g(X)\leq y)\implies f_{Y}(y)=dF_{y}(y)/dy$.
+        \item \textbf{Cont. ($g(X)$ Lineare)} $Y=\alpha X+\beta\implies f_{Y}(y)=\frac{1}{|\alpha|}f_{X}(\frac{x-\beta}{\alpha})$.
+        \item \textbf{Cont. ($g(X)$ Monotona)} $Y=g(X)\implies f_{Y}(y)=f_{X}(g^{-1}(y))/\left|\frac{d}{dx}g(g^{-1}(y))\right|$.
     \end{itemize}
 
 \end{multicols*}

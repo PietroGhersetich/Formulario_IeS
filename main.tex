@@ -203,6 +203,29 @@
                   \item \textit{Splitting di un B.P.}: gli arrivi di $BP(p)$ possono essere "divisi" in due sottoprocessi $BP(pq)$ e $BP(p(1-q))$ con $q$ prob., per un arrivo, di finire nel primo e $1-q$ di finire nel secondo b.p.; i due processi sono indipendenti.
                   \item \textit{Merging di due B.P.}: gli arrivi di $BP(p)$ e $BP(q)$ possono essere riuniti in un unico $BP(p+q-pq)$.
               \end{itemize}
+        \item \textbf{Proc. di Poisson}: $PP(\lambda)$ è la versione continua dei B.P.
+              \begin{itemize}
+                  \item \textit{Probabilità di avere $k$ arrivi nell'intervallo $[0, \tau]$}:  $N[0, \tau]\sim Poisson(\lambda\tau)$ è una v.a. di Poisson.
+                        \begin{itemize}
+                            \item $P(N[0, \tau]=k)=\begin{cases}
+                                          \frac{(\lambda\tau)^{k}}{k!}e^{-\lambda\tau} & k\in\mathbb{N} \\
+                                          0                                            & altr.
+                                      \end{cases}$.
+                            \item $E[N[0, \tau]]=Var[N[0, \tau]]=\lambda\tau$.
+                            \item $\sum_{k=0}^{+\infty}P_{N[0,\tau]}(k)=1$.
+                        \end{itemize}
+                  \item \textit{Distribuzione del tempo al $k$-esimo arrivo}: $Y_{k}\sim Erlang-k(\lambda)$.
+                        \begin{itemize}
+                            \item $f_{Y_{k}}(t)=\begin{cases}
+                                          \frac{(\lambda t)^{k-1}}{(k-1)!}e^{-\lambda t}\lambda & t>0, k\ge 1 \\
+                                          0                                                     & altr.
+                                      \end{cases}$
+                            \item $E[Y_{k}]=\frac{k}{\lambda}$, $Var[Y_{k}]=\frac{k}{\lambda^{2}}$.
+                        \end{itemize}
+                  \item \textit{Splitting di un P.P.}: $PP(\lambda)\rightarrow PP(\lambda q)\wedge PP(\lambda(1-q))$.
+                  \item \textit{Merging di due P.P.}: $PP(\lambda_{1})\wedge PP(\lambda_{2})\rightarrow PP(\lambda_{1}+\lambda_{2})$.
+                  \item \textit{Incidenza casuale per P.P.} Dato un P.P. iniziato da un tempo indefinito, il tempo tra due arrivi una $Erlang-2(\lambda)$.
+              \end{itemize}
     \end{itemize}
 
 \end{multicols*}

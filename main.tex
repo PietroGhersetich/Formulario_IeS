@@ -130,9 +130,9 @@
 
     \textbf{\underline{V.A. Notevoli}}
     \begin{itemize}
-        \item \textbf{V.A. Uniforme $X\sim Unif[\alpha, \beta]$}:
+        \item \textbf{V.A. Uniforme $X\sim\mathcal{U}[\alpha, \beta]$} (cont.):
               \begin{itemize}
-                  \item "Attribuisce la stessa probabilità ad ogni elemento dell'insieme (discreto o continuo) $S$ su cui è definita".
+                  \item "Attribuisce la stessa probabilità ad ogni elemento dell'insieme $S$ su cui è definita".
                   \item $f_{X}(x)=\begin{cases}
                                 1/(\beta-\alpha) & \alpha<x<\beta \\
                                 0                & altr.
@@ -143,22 +143,21 @@
                                 1                         & x>\beta
                             \end{cases}$
                   \item $E[X]=\frac{1}{2}(\alpha +\beta)$; $Var[X]=\frac{1}{12}(\beta -\alpha)^{2}$.
-                  \item Se discretizzata: $Var[X]=\frac{n^{2}-1}{12}$.
               \end{itemize}
-        \item \textbf{V.A. Geometriche $X\sim Geom(p)$}
+        \item \textbf{V.A. Geometrica $X\sim\mathcal{G}(p)$} (discr.):
               \begin{itemize}
                   \item "Probabilità che il primo successo (o evento in generale) richieda l'esecuzione di $x$ prove indipendenti, ognuna con probabilità di successo $p$".
                   \item $p_{X}(x)=(1-p)^{x-1}p$.
                   \item $E[X]=1/p$; $Var[X]=(1-p)/p^{2}$.
               \end{itemize}
-        \item \textbf{V.A. Binomiali/di Bernoulli $X\sim Bin(n,p)$} (se $n=1$ la binomiale torna bernoulliana).
+        \item \textbf{V.A. Binomiale/di Bernoulli $X\sim\mathcal{B}(n,p)$ (se $n=1$ Binomiale $\rightarrow$ Bernulliana)} (discr.):
               \begin{itemize}
                   \item "Probabilità di ottenere $i$ successi in $n$ prove indipendenti, ognuna con probabilità di successo $p$".
                   \item $p_{X_{i}}(1/succ.)=p$; $p_{X_{i}}(0/insucc.)=1-p$.
                   \item $p_{B}(i)=p_{X_{1}+X_{2}+...+X_{n}}(i)=\binom{n}{i}p^{i}(1-p)^{n-i}$.
                   \item $E[X]=np$; $Var[X]=np(1-p)$.
               \end{itemize}
-        \item \textbf{V.A. Esponenziale $X\sim Exp(\lambda)$}.
+        \item \textbf{V.A. Esponenziale $X\sim\mathcal{E}(\lambda)$} (cont.).
               \begin{itemize}
                   \item $f_{X}(x)=\begin{cases}
                                 \lambda e^{-x\lambda} & x\geq 0 \\
@@ -167,11 +166,11 @@
                   \item $F_{X}(x)=1-e^{-x\lambda}$.
                   \item $E[X]=1/\lambda$; $Var[X]=1/\lambda^{2}$.
               \end{itemize}
-        \item \textbf{V.A. Gaussiane $X\sim\mathcal{N}(\mu,\sigma^{2})$}.
+        \item \textbf{V.A. Gaussiana $X\sim\mathcal{N}(\mu,\sigma^{2})$} (cont.).
               \begin{itemize}
                   \item $f_{X}(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$.
                   \item $E[X]=\mu$; $Var[X]=\sigma^{2}$.
-                  \item $\mathcal{N}(0,1)$ è la gaussiana standard i cui valori di cumulata sono tabulati. $X\sim\mathcal{N}(\mu, \sigma^{2})\implies \frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$.
+                  \item $\mathcal{N}(0,1)$ è la gaussiana standard i cui valori di cumulata sono tabulati; $X\sim\mathcal{N}(\mu, \sigma^{2})\implies \frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$.
                   \item $Y=\alpha X+\beta\implies Y\sim\mathcal{N}(\alpha\mu +\beta,\alpha^{2}\sigma^{2})$.
                   \item $X\perp Y$; $X\sim\mathcal{N}(\mu_{'}, \sigma_{'}^{2})$, $Y\sim\mathcal{N}(\mu_{''}, \sigma_{''}^{2})$; $Z=X+Y\sim\mathcal{N}(\mu_{'}+\mu_{''}, \sigma_{'}^{2}+\sigma_{''}^{2})$. In ogni caso, anche se $X\not\perp Y$, $E[Z]=E[X]+E[Y]$; la varianza, invece, necessita del fattore correttivo. La somma di gaussiane sarà sempre gaussiana.
               \end{itemize}

@@ -181,5 +181,12 @@
               \end{itemize}
     \end{itemize}
 
+    \textbf{\underline{Teorema fondamentale del limite}}
+    \begin{itemize}
+        \item \textbf{C.L.T.}: Siano $X_{i}$ v.a. i.i.d. con $Var[X_{i}]=\sigma^{2}$ finita e $E[X_{i}]=\mu$. Allora, $S_{n}=X_{1}+X_{2}+...+X_{n}$ è gaussiana per $n\rightarrow\infty$; normalizzando: $Z_{n}=\frac{S_{n}-E[S_{n}]}{\sqrt{Var[S_{n}]}}=\frac{S_{n}-n\mu}{\sigma\sqrt{n}}\sim\mathcal{N}(0,1)$.
+        \item \textbf{Problema del sondaggista}: Sia $M_{n}$ una media campionaria di v.a. i.i.d. $X_{i}$ con $E[X_{i}]=\mu$ e $Var[X_{i}]=\sigma^{2}$. Allora, per $n\rightarrow\infty$, $P(|S_{n}-E[S_{n}]|<\alpha)\ge\beta$ è calcolabile come: $P\left(Z<\frac{\alpha\sqrt{n}}{\sigma}\right)\ge\beta$ dove $Z\sim\mathcal{N}(0,1)$.
+        \item \textbf{Th. De Moivre-Laplace}: Sia $X\sim\mathcal{B}(n,p)$, allora $Z_{n}=\frac{X-np}{\sqrt{np(1-p)}}\sim\mathcal{N}(0,1)$ per $n\rightarrow\infty$. Inoltre, $P(a<X<b)\approx\Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)$.
+    \end{itemize}
+
 \end{multicols*}
 \end{document}

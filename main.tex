@@ -188,5 +188,22 @@
         \item \textbf{Th. De Moivre-Laplace}: Sia $X\sim\mathcal{B}(n,p)$, allora $Z_{n}=\frac{X-np}{\sqrt{np(1-p)}}\sim\mathcal{N}(0,1)$ per $n\rightarrow\infty$. Inoltre, $P(a<X<b)\approx\Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)$.
     \end{itemize}
 
+    \textbf{\underline{Processi casuali}}
+    \begin{itemize}
+        \item \textbf{Proc. di Bernoulli}: $BP(p)$ è una serie di v.a. i.i.d. $X_{i}\sim Bern(p)$.
+              \begin{itemize}
+                  \item \textit{Numero di successi (arrivi) $S$ in $n$ istanti temporali}: $S\sim\mathcal{B}(n,p)$.
+                  \item \textit{Tempo di interarrivo}: $T_{i}\sim\mathcal{G}(p)$. Tutti i tempi di interarrivo sono indipendenti e godono di perdita di memoria.
+                  \item \textit{Tempo al $k$-esimo arrivo}: $Y_{k}=T_{1}+T_{2}+...+T_{k}$. $Y_{k}\sim\mathcal{P}(p)$ v.a. di Pascal.
+                        \begin{itemize}
+                            \item $P(Y_{k}=t)=P(k-1\; arr. in\; [1, t-1], arr.\; in\; t)=p\binom{t-1}{k-1}p^{k-1}(1-p)^{t-k}$ assunto $t\ge k\ge 1$.
+                            \item $E[Y_{k}]=k/p$.
+                            \item $Var[Y_{k}]=k(1-p)/p^{2}$.
+                        \end{itemize}
+                  \item \textit{Splitting di un B.P.}: gli arrivi di $BP(p)$ possono essere "divisi" in due sottoprocessi $BP(pq)$ e $BP(p(1-q))$ con $q$ prob., per un arrivo, di finire nel primo e $1-q$ di finire nel secondo b.p.; i due processi sono indipendenti.
+                  \item \textit{Merging di due B.P.}: gli arrivi di $BP(p)$ e $BP(q)$ possono essere riuniti in un unico $BP(p+q-pq)$.
+              \end{itemize}
+    \end{itemize}
+
 \end{multicols*}
 \end{document}

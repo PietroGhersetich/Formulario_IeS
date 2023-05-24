@@ -90,6 +90,14 @@
               \end{itemize}
     \end{itemize}
 
+    \textbf{\underline{Calcolo di una Funzione di V.A.}}
+    \begin{itemize}
+        \item \textbf{Discr.} $p_{Y}(y)=P(g(X)=y)=\sum_{x|g(x)=y}p_{X}(x)$.
+        \item \textbf{Cont. (Cumulata)} $F_{Y}(y)=P(g(X)\leq y)\implies f_{Y}(y)=dF_{y}(y)/dy$.
+        \item \textbf{Cont. ($g(X)$ Lineare)} $Y=\alpha X+\beta\implies f_{Y}(y)=\frac{1}{|\alpha|}f_{X}(\frac{x-\beta}{\alpha})$.
+        \item \textbf{Cont. ($g(X)$ Monotona)} $Y=g(X)\implies f_{Y}(y)=f_{X}(g^{-1}(y))/\left|\frac{d}{dx}g(g^{-1}(y))\right|$.
+    \end{itemize}
+
     \textbf{\underline{Altri Indicatori Statistici per V.A. Multiple}}
     \begin{itemize}
         \item \textbf{Covarianza}
@@ -167,13 +175,6 @@
                   \item $Y=\alpha X+\beta\implies Y\sim\mathcal{N}(\alpha\mu +\beta,\alpha^{2}\sigma^{2})$.
                   \item $X\perp Y$; $X\sim\mathcal{N}(\mu_{'}, \sigma_{'}^{2})$, $Y\sim\mathcal{N}(\mu_{''}, \sigma_{''}^{2})$; $Z=X+Y\sim\mathcal{N}(\mu_{'}+\mu_{''}, \sigma_{'}^{2}+\sigma_{''}^{2})$. In ogni caso, anche se $X\not\perp Y$, $E[Z]=E[X]+E[Y]$; la varianza, invece, necessita del fattore correttivo. La somma di gaussiane sarà sempre gaussiana.
               \end{itemize}
-    \end{itemize}
-    \textbf{\underline{Calcolo di una Funzione di V.A.}}
-    \begin{itemize}
-        \item \textbf{Discr.} $p_{Y}(y)=P(g(X)=y)=\sum_{x|g(x)=y}p_{X}(x)$.
-        \item \textbf{Cont. (Cumulata)} $F_{Y}(y)=P(g(X)\leq y)\implies f_{Y}(y)=dF_{y}(y)/dy$.
-        \item \textbf{Cont. ($g(X)$ Lineare)} $Y=\alpha X+\beta\implies f_{Y}(y)=\frac{1}{|\alpha|}f_{X}(\frac{x-\beta}{\alpha})$.
-        \item \textbf{Cont. ($g(X)$ Monotona)} $Y=g(X)\implies f_{Y}(y)=f_{X}(g^{-1}(y))/\left|\frac{d}{dx}g(g^{-1}(y))\right|$.
     \end{itemize}
 
 \end{multicols*}

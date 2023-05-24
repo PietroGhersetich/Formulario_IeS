@@ -194,7 +194,7 @@
               \begin{itemize}
                   \item \textit{Numero di successi (arrivi) $S$ in $n$ istanti temporali}: $S\sim\mathcal{B}(n,p)$.
                   \item \textit{Tempo di interarrivo}: $T_{i}\sim\mathcal{G}(p)$. Tutti i tempi di interarrivo sono indipendenti e godono di perdita di memoria.
-                  \item \textit{Tempo al $k$-esimo arrivo}: $Y_{k}=T_{1}+T_{2}+...+T_{k}$. $Y_{k}\sim\mathcal{P}(p)$ v.a. di Pascal.
+                  \item \textit{Tempo al $k$-esimo arrivo}: $Y_{k}=T_{1}+T_{2}+...+T_{k}$. $Y_{k}\sim Pascal(p)$ v.a. di Pascal.
                         \begin{itemize}
                             \item $P(Y_{k}=t)=P(k-1\; arr. in\; [1, t-1], arr.\; in\; t)=p\binom{t-1}{k-1}p^{k-1}(1-p)^{t-k}$ assunto $t\ge k\ge 1$.
                             \item $E[Y_{k}]=k/p$.

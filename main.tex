@@ -23,7 +23,7 @@
         \item \textbf{Teo. Prob. Totali}: $P(\bigcup_{i=1}^{n}P(A_{i}))=\sum_{i=1}^{n}P(A_{i})$; $A_{1},...,A_{n}$ eventi indipendenti.
         \item \textbf{Prob. Condizionate}: $P(A|B)={P(A\cap B)}/{P(B)}$.
         \item \textbf{Teo. Prob. Totali (Partizioni)}: $P(A)=\sum_{i=1}^{n}P(B_{i})P(A|B_{i})$, $B_{1},...,B_{n}$ partizioni di $\Omega$.
-        \item \textbf{Teo. Bayes}: $P(A_{i}|B)=P(B|A_{i})P(A_{i})/(\sum_{j=1}^{n}P(B|A_{j})P(A_j))=P(B)$, $A_{i}\in A_{1},...,A_{n}$ partizioni di $\Omega$.
+        \item \textbf{Teo. Bayes}: $P(A_{i}|B)=P(B|A_{i})P(A_{i})/(\sum_{j=1}^{n}P(B|A_{j})P(A_j)=P(B))$, $A_{i}\in A_{1},...,A_{n}$ partizioni di $\Omega$.
         \item \textbf{Note sui Complementari}: $P(A)=1-P(A^{C})$; $P(A|B)=1-P(A^{C}|B)$.
         \item \textbf{Indipendenza}: $A_{1},...,A_{n}$ eventi indipendenti sse $P(\bigcap_{i=1}^{n}P(A_{i}))=\prod_{i=1}^{n}P(A_{i})$.
         \item \textbf{Note sull'Indipendenza}: $P(A|B)=P(A)$ sse $A, B$ eventi indipendenti; indipendenza condizionata $\nleftrightarrow$ indipendenza incondizionata.
@@ -75,7 +75,7 @@
     \begin{itemize}
         \item \textbf{Marginalizzazione}: $f_{Y}(y)=\int_{x}f_{X,Y}(x,y)dx=\int_{y}f_{Y|X}(y|x)f_{X}(x)dx$.
         \item \textbf{Valore Atteso}: data $g(x,y)$ deterministica $E[g(X,Y)]=\iint_{\mathbb{R}}g(X,Y)f_{X,Y}(x,y)dxdy$.
-        \item \textbf{Casi Particolari (X, Y Indipendenti)}: $X\perp Y\Rightarrow f_{x,Y}(x,y)=f_{X}(x)f_{Y}(y)\wedge F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
+        \item \textbf{Casi Particolari (X, Y Indipendenti)}: $X\perp Y\Rightarrow f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)\wedge F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
         \item \textbf{Teo. Bayes nel Continuo e Situazioni Ibride}:
               \begin{itemize}
                   \item $X,Y$ continue: $f_{X|Y}(x,y)=f_{Y|X}(y|x)f_{X}(x)/f_{Y}(y)$.
@@ -85,9 +85,17 @@
         \item \textbf{Somma di Variabili Aleatorie Continue}: Sia $Z=X+Y$:
               \begin{itemize}
                   \item $X\perp Y\Longleftrightarrow f_{Z,X}(z,x)=f_X(x)f_Y(z-x)$.
-                  \item $f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx$. (Convoluzione.)
+                  \item $f_Z(z)=\int_{-\infty}^{+\infty}f_X(x)f_Y(z-x)dx$. \textbf{Convoluzione.}
                   \item $F_Z(z)=F_{X+Y}(z)=\int_{-\infty}^{+\infty}F_x(z-y)f_Y(y)dy$.
               \end{itemize}
+    \end{itemize}
+
+    \textbf{\underline{Calcolo di una Funzione di V.A.}}
+    \begin{itemize}
+        \item \textbf{Discr.} $p_{Y}(y)=P(g(X)=y)=\sum_{x|g(x)=y}p_{X}(x)$.
+        \item \textbf{Cont. (Cumulata)} $F_{Y}(y)=P(g(X)\leq y)\implies f_{Y}(y)=dF_{y}(y)/dy$.
+        \item \textbf{Cont. ($g(X)$ Lineare)} $Y=\alpha X+\beta\implies f_{Y}(y)=\frac{1}{|\alpha|}f_{X}(\frac{x-\beta}{\alpha})$.
+        \item \textbf{Cont. ($g(X)$ Monotona)} $Y=g(X)\implies f_{Y}(y)=f_{X}(g^{-1}(y))/\left|\frac{d}{dx}g(g^{-1}(y))\right|$.
     \end{itemize}
 
     \textbf{\underline{Altri Indicatori Statistici per V.A. Multiple}}
@@ -122,9 +130,9 @@
 
     \textbf{\underline{V.A. Notevoli}}
     \begin{itemize}
-        \item \textbf{V.A. Uniforme $X\sim Unif[\alpha, \beta]$}:
+        \item \textbf{V.A. Uniforme $X\sim\mathcal{U}[\alpha, \beta]$} (cont.):
               \begin{itemize}
-                  \item "Attribuisce la stessa probabilità ad ogni elemento dell'insieme (discreto o continuo) $S$ su cui è definita".
+                  \item "Attribuisce la stessa probabilità ad ogni elemento dell'insieme $S$ su cui è definita".
                   \item $f_{X}(x)=\begin{cases}
                                 1/(\beta-\alpha) & \alpha<x<\beta \\
                                 0                & altr.
@@ -135,22 +143,26 @@
                                 1                         & x>\beta
                             \end{cases}$
                   \item $E[X]=\frac{1}{2}(\alpha +\beta)$; $Var[X]=\frac{1}{12}(\beta -\alpha)^{2}$.
-                  \item Se discretizzata: $Var[X]=\frac{n^{2}-1}{12}$.
               \end{itemize}
-        \item \textbf{V.A. Geometriche $X\sim Geom(p)$}
+        \item \textbf{V.A. Uniforme $X\sim\mathcal{U}\{\alpha, \beta\}$} (discr.):
+              \begin{itemize}
+                  \item $p_{X}(x)=1/n$.
+                  \item $E[X]=\frac{1}{2}(\alpha +\beta)$; $Var[X]=\frac{1}{12}(n^{2}-1)$.
+              \end{itemize}
+        \item \textbf{V.A. Geometrica $X\sim\mathcal{G}(p)$} (discr.):
               \begin{itemize}
                   \item "Probabilità che il primo successo (o evento in generale) richieda l'esecuzione di $x$ prove indipendenti, ognuna con probabilità di successo $p$".
                   \item $p_{X}(x)=(1-p)^{x-1}p$.
                   \item $E[X]=1/p$; $Var[X]=(1-p)/p^{2}$.
               \end{itemize}
-        \item \textbf{V.A. Binomiali/di Bernoulli $X\sim Bin(n,p)$} (se $n=1$ la binomiale torna bernoulliana).
+        \item \textbf{V.A. Binomiale/di Bernoulli $X\sim\mathcal{B}(n,p)$ (se $n=1$ Binomiale $\rightarrow$ Bernulliana)} (discr.):
               \begin{itemize}
                   \item "Probabilità di ottenere $i$ successi in $n$ prove indipendenti, ognuna con probabilità di successo $p$".
                   \item $p_{X_{i}}(1/succ.)=p$; $p_{X_{i}}(0/insucc.)=1-p$.
                   \item $p_{B}(i)=p_{X_{1}+X_{2}+...+X_{n}}(i)=\binom{n}{i}p^{i}(1-p)^{n-i}$.
                   \item $E[X]=np$; $Var[X]=np(1-p)$.
               \end{itemize}
-        \item \textbf{V.A. Esponenziale $X\sim Exp(\lambda)$}.
+        \item \textbf{V.A. Esponenziale $X\sim\mathcal{E}(\lambda)$} (cont.).
               \begin{itemize}
                   \item $f_{X}(x)=\begin{cases}
                                 \lambda e^{-x\lambda} & x\geq 0 \\
@@ -159,21 +171,14 @@
                   \item $F_{X}(x)=1-e^{-x\lambda}$.
                   \item $E[X]=1/\lambda$; $Var[X]=1/\lambda^{2}$.
               \end{itemize}
-        \item \textbf{V.A. Gaussiane $X\sim\mathcal{N}(\mu,\sigma^{2})$}.
+        \item \textbf{V.A. Gaussiana $X\sim\mathcal{N}(\mu,\sigma^{2})$} (cont.).
               \begin{itemize}
                   \item $f_{X}(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}$.
                   \item $E[X]=\mu$; $Var[X]=\sigma^{2}$.
-                  \item $\mathcal{N}(0,1)$ è la gaussiana standard i cui valori di cumulata sono tabulati. $X\sim\mathcal{N}(\mu, \sigma^{2})\implies \frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$.
+                  \item $\mathcal{N}(0,1)$ è la gaussiana standard i cui valori di cumulata sono tabulati; $X\sim\mathcal{N}(\mu, \sigma^{2})\implies \frac{X-\mu}{\sigma}\sim\mathcal{N}(0,1)$.
                   \item $Y=\alpha X+\beta\implies Y\sim\mathcal{N}(\alpha\mu +\beta,\alpha^{2}\sigma^{2})$.
                   \item $X\perp Y$; $X\sim\mathcal{N}(\mu_{'}, \sigma_{'}^{2})$, $Y\sim\mathcal{N}(\mu_{''}, \sigma_{''}^{2})$; $Z=X+Y\sim\mathcal{N}(\mu_{'}+\mu_{''}, \sigma_{'}^{2}+\sigma_{''}^{2})$. In ogni caso, anche se $X\not\perp Y$, $E[Z]=E[X]+E[Y]$; la varianza, invece, necessita del fattore correttivo. La somma di gaussiane sarà sempre gaussiana.
               \end{itemize}
-    \end{itemize}
-    \textbf{\underline{Calcolo di una Funzione di V.A.}}
-    \begin{itemize}
-        \item Discr. $p_{Y}(y)=P(g(X)=y)=\sum_{x|g(x)=y}p_{X}(x)$.
-        \item Cont. (Cumulata) $F_{Y}(y)=P(g(X)\leq y)\implies f_{Y}(y)=dF_{y}(y)/dy$.
-        \item Cont. ($g(X)$ Lineare) $Y=\alpha X+\beta\implies f_{Y}(y)=\frac{1}{|\alpha|}f_{X}(\frac{x-\beta}{\alpha})$.
-        \item Cont. ($g(X)$ Monotona) $Y=g(X)\implies f_{Y}(y)=f_{X}(g^{-1}(y))/\left|\frac{d}{dx}g(g^{-1}(y))\right|$.
     \end{itemize}
 
 \end{multicols*}

@@ -182,14 +182,14 @@
               \end{itemize}
     \end{itemize}
 
-    \textbf{\underline{Teorema fondamentale del limite}}
+    \textbf{\underline{Teorema Fondamentale del Limite}}
     \begin{itemize}
         \item \textbf{C.L.T.}: Siano $X_{i}$ v.a. i.i.d. con $Var[X_{i}]=\sigma^{2}$ finita e $E[X_{i}]=\mu$. Allora, $S_{n}=X_{1}+X_{2}+...+X_{n}$ è gaussiana per $n\rightarrow\infty$; normalizzando: $Z_{n}=\frac{S_{n}-E[S_{n}]}{\sqrt{Var[S_{n}]}}=\frac{S_{n}-n\mu}{\sigma\sqrt{n}}\sim\mathcal{N}(0,1)$.
         \item \textbf{Problema del sondaggista}: Sia $M_{n}$ una media campionaria di v.a. i.i.d. $X_{i}$ con $E[X_{i}]=\mu$ e $Var[X_{i}]=\sigma^{2}$. Allora, per $n\rightarrow\infty$, $P(|S_{n}-E[S_{n}]|<\alpha)\ge\beta$ è calcolabile come: $P\left(Z<\frac{\alpha\sqrt{n}}{\sigma}\right)\ge\beta$ dove $Z\sim\mathcal{N}(0,1)$.
         \item \textbf{Th. De Moivre-Laplace}: Sia $X\sim\mathcal{B}(n,p)$, allora $Z_{n}=\frac{X-np}{\sqrt{np(1-p)}}\sim\mathcal{N}(0,1)$ per $n\rightarrow\infty$. Inoltre, $P(a<X<b)\approx\Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)$.
     \end{itemize}
 
-    \textbf{\underline{Processi casuali}}
+    \textbf{\underline{Processi Casuali}}
     \begin{itemize}
         \item \textbf{Proc. di Bernoulli}: $BP(p)$ è una serie di v.a. i.i.d. $X_{i}\sim Bern(p)$.
               \begin{itemize}
@@ -243,7 +243,7 @@
         \item \textbf{Stimatore "L.M.S"}:
               \begin{itemize}
                   \item $\hat{\Theta}_{LMS}=E[\Theta]\rightarrow\hat{\Theta}_{LMS}(X)=E[\Theta|X]$.
-                  \item \textit{MSE}: $error(\hat{\Theta}_{LMS})=E[(\Theta-\hat{\Theta}_{LMS})^{2}]=Var[\Theta]$.
+                  \item \textit{M.S.E.}: $error(\hat{\Theta}_{LMS})=E[(\Theta-\hat{\Theta}_{LMS})^{2}]=Var[\Theta]$.
                         \begin{itemize}
                             \item $E[(\Theta-E[\Theta|X])^{2}]=E[E[(\Theta-E[\Theta|X])^{2}|X]]=E[Var[\Theta|X]]\leq Var[\Theta]$.
                             \item $Var[\Theta]=E[Var[\Theta|X]]+Var[E[\Theta|X]]\ge E[Var[\Theta|X]]$.
@@ -257,14 +257,14 @@
         \item \textbf{Stimatore "L.M.S." lineare}:
               \begin{itemize}
                   \item $\hat{\Theta}_{LIN}(X)=E[\Theta]+\frac{Cov[X, \Theta]}{Var[X]}(X-E[X])\rightarrow\frac{\hat{\Theta}_{LIN}(X)-E[\Theta]}{\sigma_{\Theta}}=\frac{Cov[X,\Theta]}{\sigma_{X}\sigma_{\Theta}}\frac{X-E[X]}{\sigma_{X}}$.
-                  \item \textit{MSE lineare}: $MSE=E[(\Theta-\hat{\Theta}_{LIN})^2]=(1-\rho^{2}[X,\Theta])Var[\Theta]=(1-\frac{Cov^{2}[X,\Theta]}{Var[X]Var[\Theta]})Var[\Theta]$.
+                  \item \textit{M.S.E. lineare}: $MSE=E[(\Theta-\hat{\Theta}_{LIN})^2]=(1-\rho^{2}[X,\Theta])Var[\Theta]=(1-\frac{Cov^{2}[X,\Theta]}{Var[X]Var[\Theta]})Var[\Theta]$.
                   \item \textit{Costruzione di LMS lineare con osservazioni multiple}: $\hat{\Theta}_{LIN}=a_{1}X_{1}+a_{2}X_{2}+...+a_{n}X_{n}+b$.
-                  \begin{itemize}
-                    \item Se: $X_{i}=\Theta + W_{i}\rightarrow \Theta\perp W_{1}\perp W_{2}\perp ...\perp W_{n}$;
-                    \item con: $E[\Theta]=\mu$, $Var[\Theta]=\sigma^{2}_{\Theta}$, $E[W_{i}]=0$, $Var[W_{i}]=\sigma^{2}_{i}$;
-                    \item allora: $\hat{\Theta}_{LIN}=\frac{\frac{\mu}{\sigma^{2}_{\Theta}}+\sum_{i=i}^{n}\frac{X_{i}}{\sigma^{2}_{i}}}{\sum_{i=1}^{n}\frac{1}{\sigma^{2}_{i}}}$.
-                    \item N.B.: Se $X_{i}\sim\mathcal{N}$, allora: $\hat{\Theta}_{LIN}=\hat{\Theta}_{LMS}\sim\mathcal{N}$.
-                  \end{itemize}
+                        \begin{itemize}
+                            \item Se: $X_{i}=\Theta + W_{i}\rightarrow \Theta\perp W_{1}\perp W_{2}\perp ...\perp W_{n}$;
+                            \item con: $E[\Theta]=\mu$, $Var[\Theta]=\sigma^{2}_{\Theta}$, $E[W_{i}]=0$, $Var[W_{i}]=\sigma^{2}_{i}$;
+                            \item allora: $\hat{\Theta}_{LIN}=\frac{\frac{\mu}{\sigma^{2}_{\Theta}}+\sum_{i=i}^{n}\frac{X_{i}}{\sigma^{2}_{i}}}{\sum_{i=1}^{n}\frac{1}{\sigma^{2}_{i}}}$.
+                            \item N.B.: Se $X_{i}\sim\mathcal{N}$, allora: $\hat{\Theta}_{LIN}=\hat{\Theta}_{LMS}\sim\mathcal{N}$.
+                        \end{itemize}
               \end{itemize}
     \end{itemize}
 

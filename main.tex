@@ -319,5 +319,15 @@
               \end{itemize}
     \end{itemize}
 
+    \textbf{\underline{Teoria dell'Informazione}}
+    \begin{itemize}
+        \item \textit{Informazione di un evento}: $i(A)=\log{\frac{1}{P(A)}}$.
+        \item \textit{Informazione di eventi indipendenti}: $A\perp B$, $i(A\cap B)=i(A)+i(B)$.
+        \item \textit{Entropia}: $H(X)=E\left[i(X)\right]=E\left[\log\frac{1}{p_{X}(x)}\right]=E\left[-\log p_{X}(x)\right]=-\sum_{j=i}^{n}p_{X}(x_{j})\log p_{X}(x_{j})\leq \log n$. $H(X)\ge 0\; \forall X$.
+        \item \textit{Diseguaglianza di Jensen}: $\sum_{j=1}^{m}{\lambda_j\log{x_j}}\le\log{\ \sum_{j=1}^{m}{\lambda_jx_j}}$; $\lambda_1,\lambda_2,\ldots,\ \lambda_m:\sum_{j=1}^{m}\lambda_j=1,\ \lambda_j\geq 0$. (Valida in generale per funzioni concave).
+        \item \textit{Diseguaglianza di Kraft-McMillan}: $\sum_{j=1}^{m}{\ 2^{-lj}}\le1$.
+        \item \textit{Codifica di sorgente lossless}: $X$ v.a. con $m$ risultati, per ogni codice prefix-free che usa sequenza $l_j$ bit a risultato $X=x_j\rightarrow\ E\left[L\right]=\sum_{j=1}^{m}{l_jp_X\left(x_j\right)}\geq H\left(X\right)$.
+    \end{itemize}
+
 \end{multicols*}
 \end{document}

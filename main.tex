@@ -1,6 +1,7 @@
 % Geometria documento.
-\documentclass{article}
-\usepackage[a4paper, landscape, left=0.5cm, right=0.5cm, top=0.5cm, bottom=0.5cm]{geometry}
+\documentclass[8pt]{extarticle}
+% Il mio driver di stampa aggiunge, per qualche motivo, dei margini aggiuntivi; sono sufficienti.
+\usepackage[a4paper, landscape, left=0.1cm, right=0.1cm, top=0.1cm, bottom=0.1cm]{geometry}
 % Allineamento contenuti.
 \usepackage[document]{ragged2e}
 \usepackage{multicol}
@@ -10,7 +11,10 @@
 % Utility per formule.
 \usepackage{mathtools, nccmath}
 \usepackage{amssymb, amsmath}
-
+% Pseudo-codici
+\usepackage{algpseudocode}
+% Funzione indicatrice.
+\usepackage{bbm}
 
 \begin{document}
 % Rimuovo la numerazione delle pagine.
@@ -179,6 +183,150 @@
                   \item $Y=\alpha X+\beta\implies Y\sim\mathcal{N}(\alpha\mu +\beta,\alpha^{2}\sigma^{2})$.
                   \item $X\perp Y$; $X\sim\mathcal{N}(\mu_{'}, \sigma_{'}^{2})$, $Y\sim\mathcal{N}(\mu_{''}, \sigma_{''}^{2})$; $Z=X+Y\sim\mathcal{N}(\mu_{'}+\mu_{''}, \sigma_{'}^{2}+\sigma_{''}^{2})$. In ogni caso, anche se $X\not\perp Y$, $E[Z]=E[X]+E[Y]$; la varianza, invece, necessita del fattore correttivo. La somma di gaussiane sarà sempre gaussiana.
               \end{itemize}
+    \end{itemize}
+
+    \textbf{\underline{Teorema Fondamentale del Limite}}
+    \begin{itemize}
+        \item \textbf{C.L.T.}: Siano $X_{i}$ v.a. i.i.d. con $Var[X_{i}]=\sigma^{2}$ finita e $E[X_{i}]=\mu$. Allora, $S_{n}=X_{1}+X_{2}+...+X_{n}$ è gaussiana per $n\rightarrow\infty$; normalizzando: $Z_{n}=\frac{S_{n}-E[S_{n}]}{\sqrt{Var[S_{n}]}}=\frac{S_{n}-n\mu}{\sigma\sqrt{n}}\sim\mathcal{N}(0,1)$.
+        \item \textbf{Problema del sondaggista}: Sia $M_{n}$ una media campionaria di v.a. i.i.d. $X_{i}$ con $E[X_{i}]=\mu$ e $Var[X_{i}]=\sigma^{2}$. Allora, per $n\rightarrow\infty$, $P(|S_{n}-E[S_{n}]|<\alpha)\ge\beta$ è calcolabile come: $P\left(Z<\frac{\alpha\sqrt{n}}{\sigma}\right)\ge\beta$ dove $Z\sim\mathcal{N}(0,1)$.
+        \item \textbf{Th. De Moivre-Laplace}: Sia $X\sim\mathcal{B}(n,p)$, allora $Z_{n}=\frac{X-np}{\sqrt{np(1-p)}}\sim\mathcal{N}(0,1)$ per $n\rightarrow\infty$. Inoltre, $P(a<X<b)\approx\Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)$.
+    \end{itemize}
+
+    \textbf{\underline{Processi Casuali}}
+    \begin{itemize}
+        \item \textbf{Proc. di Bernoulli}: $BP(p)$ è una serie di v.a. i.i.d. $X_{i}\sim Bern(p)$.
+              \begin{itemize}
+                  \item \textit{Numero di successi (arrivi) $S$ in $n$ istanti temporali}: $S\sim\mathcal{B}(n,p)$.
+                  \item \textit{Tempo di interarrivo}: $T_{i}\sim\mathcal{G}(p)$. Tutti i tempi di interarrivo sono indipendenti e godono di perdita di memoria.
+                  \item \textit{Tempo al $k$-esimo arrivo}: $Y_{k}=T_{1}+T_{2}+...+T_{k}$. $Y_{k}\sim Pascal(p)$ v.a. di Pascal.
+                        \begin{itemize}
+                            \item $P(Y_{k}=t)=P(k-1\; arr. in\; [1, t-1], arr.\; in\; t)=p\binom{t-1}{k-1}p^{k-1}(1-p)^{t-k}$ assunto $t\ge k\ge 1$.
+                            \item $E[Y_{k}]=k/p$.
+                            \item $Var[Y_{k}]=k(1-p)/p^{2}$.
+                        \end{itemize}
+                  \item \textit{Splitting di un B.P.}: gli arrivi di $BP(p)$ possono essere "divisi" in due sottoprocessi $BP(pq)$ e $BP(p(1-q))$ con $q$ prob., per un arrivo, di finire nel primo e $1-q$ di finire nel secondo b.p.; i due processi sono indipendenti.
+                  \item \textit{Merging di due B.P.}: gli arrivi di $BP(p)$ e $BP(q)$ possono essere riuniti in un unico $BP(p+q-pq)$.
+              \end{itemize}
+        \item \textbf{Proc. di Poisson}: $PP(\lambda)$ è la versione continua dei B.P.
+              \begin{itemize}
+                  \item \textit{Probabilità di avere $k$ arrivi nell'intervallo $[0, \tau]$}:  $N[0, \tau]\sim Poisson(\lambda\tau)$ è una v.a. di Poisson.
+                        \begin{itemize}
+                            \item $P(N[0, \tau]=k)=\begin{cases}
+                                          \frac{(\lambda\tau)^{k}}{k!}e^{-\lambda\tau} & k\in\mathbb{N} \\
+                                          0                                            & altr.
+                                      \end{cases}$.
+                            \item $E[N[0, \tau]]=Var[N[0, \tau]]=\lambda\tau$.
+                            \item $\sum_{k=0}^{+\infty}P_{N[0,\tau]}(k)=1$.
+                        \end{itemize}
+                  \item \textit{Distribuzione del tempo al $k$-esimo arrivo}: $Y_{k}\sim Erlang-k(\lambda)$.
+                        \begin{itemize}
+                            \item $f_{Y_{k}}(t)=\begin{cases}
+                                          \frac{(\lambda t)^{k-1}}{(k-1)!}e^{-\lambda t}\lambda & t>0, k\ge 1 \\
+                                          0                                                     & altr.
+                                      \end{cases}$
+                            \item $E[Y_{k}]=\frac{k}{\lambda}$, $Var[Y_{k}]=\frac{k}{\lambda^{2}}$.
+                        \end{itemize}
+                  \item \textit{Splitting di un P.P.}: $PP(\lambda)\rightarrow PP(\lambda q)\wedge PP(\lambda(1-q))$.
+                  \item \textit{Merging di due P.P.}: $PP(\lambda_{1})\wedge PP(\lambda_{2})\rightarrow PP(\lambda_{1}+\lambda_{2})$.
+                  \item \textit{Incidenza casuale per P.P.} Dato un P.P. iniziato da un tempo indefinito, il tempo tra due arrivi è una $Erlang-2(\lambda)$.
+              \end{itemize}
+    \end{itemize}
+
+    \textbf{\underline{Stima Bayesiana}}
+    \begin{itemize}
+        \item A partire da una v.a. $X$, che rappresenta l'esito di una misura, si vuole stimare, mediante la regola di Bayes, $\Theta$ (v.a.) quantità da misurare. $P_{X|\Theta}(x, \theta)/f_{X|\Theta}(x, \theta)\rightarrow P_{\Theta|X}(\theta, X)/f_{\Theta|X}(\theta, X)$.
+        \item \textbf{Stimatore "M.A.P."}:
+              \begin{itemize}
+                  \item $\hat{\Theta}_{MAP}=\begin{cases}
+                                \arg\max{\Theta}P_{\Theta|X}(\theta|X) & discr. \\
+                                \arg\max{\Theta}f_{\Theta|X}(\theta|X) & cont.
+                            \end{cases}$
+                  \item Alternativamente, se $\Theta$ v.a. cont., $E[\Theta|X=x]=\int_{\mathbb{R}}\theta f_{\Theta|X}(\theta|x)d\theta$ (vedi sotto).
+              \end{itemize}
+        \item \textbf{Stimatore "L.M.S"}:
+              \begin{itemize}
+                  \item $\hat{\Theta}_{LMS}=E[\Theta]\rightarrow\hat{\Theta}_{LMS}(X)=E[\Theta|X]$.
+                  \item \textit{M.S.E.}: $error(\hat{\Theta}_{LMS})=E[(\Theta-\hat{\Theta}_{LMS})^{2}]=Var[\Theta]$.
+                        \begin{itemize}
+                            \item $E[(\Theta-E[\Theta|X])^{2}]=E[E[(\Theta-E[\Theta|X])^{2}|X]]=E[Var[\Theta|X]]\leq Var[\Theta]$.
+                            \item $Var[\Theta]=E[Var[\Theta|X]]+Var[E[\Theta|X]]\ge E[Var[\Theta|X]]$.
+                        \end{itemize}
+                  \item \textit{Proprietà}:
+                        \begin{itemize}
+                            \item $\widetilde{\Theta}=\hat{\Theta}_{LMS}-\Theta$, $E[\widetilde{\Theta}]=0$ (LMA a-polarizzata). Per qualunque $h(X)$ deterministica: $E[\widetilde{\Theta\cdot h(X)}]=0$.
+                            \item $Cov[\widetilde{\Theta}, \hat{\Theta}_{LMS}]=0$.
+                        \end{itemize}
+              \end{itemize}
+        \item \textbf{Stimatore "L.M.S." lineare}:
+              \begin{itemize}
+                  \item $\hat{\Theta}_{LIN}(X)=E[\Theta]+\frac{Cov[X, \Theta]}{Var[X]}(X-E[X])\rightarrow\frac{\hat{\Theta}_{LIN}(X)-E[\Theta]}{\sigma_{\Theta}}=\frac{Cov[X,\Theta]}{\sigma_{X}\sigma_{\Theta}}\frac{X-E[X]}{\sigma_{X}}$.
+                  \item \textit{M.S.E. lineare}: $MSE=E[(\Theta-\hat{\Theta}_{LIN})^2]=(1-\rho^{2}[X,\Theta])Var[\Theta]=(1-\frac{Cov^{2}[X,\Theta]}{Var[X]Var[\Theta]})Var[\Theta]$.
+                  \item \textit{Costruzione di LMS lineare con osservazioni multiple}: $\hat{\Theta}_{LIN}=a_{1}X_{1}+a_{2}X_{2}+...+a_{n}X_{n}+b$.
+                        \begin{itemize}
+                            \item Se: $X_{i}=\Theta + W_{i}\rightarrow \Theta\perp W_{1}\perp W_{2}\perp ...\perp W_{n}$;
+                            \item con: $E[\Theta]=\mu$, $Var[\Theta]=\sigma^{2}_{\Theta}$, $E[W_{i}]=0$, $Var[W_{i}]=\sigma^{2}_{i}$;
+                            \item allora: $\hat{\Theta}_{LIN}=\frac{\frac{\mu}{\sigma^{2}_{\Theta}}+\sum_{i=i}^{n}\frac{X_{i}}{\sigma^{2}_{i}}}{\sum_{i=1}^{n}\frac{1}{\sigma^{2}_{i}}}$.
+                            \item N.B.: Se $X_{i}\sim\mathcal{N}$, allora: $\hat{\Theta}_{LIN}=\hat{\Theta}_{LMS}\sim\mathcal{N}$.
+                        \end{itemize}
+              \end{itemize}
+    \end{itemize}
+
+    % Necessario per andare a capo.
+    \hfill \break
+    \textbf{\underline{Stima di Esperimenti Aleatori}}
+    \begin{itemize}
+        \item \textbf{Introduzione}
+              \begin{itemize}
+                  \item Dato un evento $A$ e un esperimento aleatorio, si vuole stimare la probabilità di $P(A)$. Ripetendo $n$ volte l'esperimento (Montecarlo), la media campionaria ottenuta presenta il seguente errore relativo di stima: $MSE=\frac{\sqrt{Var[M_{n}]}}{P(A)}=\frac{1}{\sqrt{n}}\sqrt{\frac{1-P(A)}{P(A)}}$.
+                  \item Dato un generatore di bit (pseudo-)casuali, la loro rappresetazione decimale, su una base opportuna sarà distribuita uniformemente tra $U\sim\mathcal{U}[0,1]$.
+                  \item Data $U\sim\mathcal{U}[0,1]$ voglio campionare da una $X\sim f_{X}$ nota a priori:
+                  \item \textit{Metodo della cumulata inversa}: trovo una $g(u)$ t.c. $\forall u\in [0,1]\; g(u)=F_{X}^{-1}(u)\rightarrow g(U)=X\sim f_{X}$.
+                  \item \textit{App. Campionamento da esponenziale}: $X\sim\mathcal{E}(\lambda)=-\frac{1}{\lambda}\ln{U}$.
+              \end{itemize}
+        \item \textbf{Acceptance-Rejection}
+              \begin{itemize}
+                  \item \textit{Versione "classica"}: $X$ v.a. di legge nota a priori; scelgo un valore $m$ t.c. $m\ge \max{}(f_{X}(x))$.
+                        \begin{algorithmic}[1]
+                            \State $U\sim\mathcal{U}[0,\max{x}(x)]$.
+                            \State $U^{'}\sim\mathcal{U}[0,m]$.
+                            \If{$mU^{'}\leq f_{X}(U)$}
+                            \State Accetto e pongo $X=U$.
+                            \Else
+                            \State Torno a passo 1.
+                            \EndIf
+                        \end{algorithmic}
+                  \item \textit{Versione "generalizzata"}: Voglio trovare un valore di $m\in\mathbb{N}^{+}$ t.c. $mf_{Y}(x)\ge f_{X}(x)\; \forall x\in\mathbb{N}$.
+                        \begin{algorithmic}[1]
+                            \State $Y\sim f_{Y}$.
+                            \State $U\sim\mathcal{U}[0,1]$. ($U\perp Y$).
+                            \If{$mf_{Y}(y)U\leq f_{X}(y)$}
+                            \State Accetto e pongo $X=Y$.
+                            \Else
+                            \State Torno a passo 1.
+                            \EndIf
+                        \end{algorithmic}
+                        \begin{itemize}
+                            \item Se $X\sim\mathcal{N}(0,1)$ mi converrebbe che $Y\sim\mathcal{E}(1)$ e $m=2\sqrt{\frac{e}{2\pi}}$.
+                        \end{itemize}
+                  \item \textit{Efficienza degli algoritmi}: $P\left(U\leq \frac{f_{X}(y)}{mf_{Y}(y)}\right)=\frac{1}{m}$.
+              \end{itemize}
+        \item \textbf{Importance Sampling}
+              \begin{itemize}
+                  \item Voglio stimare $P(A)$, mediante Montecarlo, ma l'evento $A$ è troppo raro e il numero di sample $n$ è ingestibile; oppure, voglio mantenere $n$ invariato ma cercare di abbassare l'errore relativo di stima. Posso l'esperimento aleatorio in modo da aumentare $P(A)$ e, in seguito, traslerò poi le informazioni ottenute al caso originale.
+                  \item $P_{X}(A)=E\left[\mathbbm{1}(X\in A)\right]=E\left[\underbrace{\mathbbm{1}\frac{f_{X}(y)}{f_{Y}(y)}}_{g(Y)}\right]$.
+                  \item $\hat{P_{X}(A)}=\frac{1}{n}\sum_{i=1}^{n}g(y_{i})$.
+                  \item $\hat{P_{X}(A)}\rightarrow^{P} P_{X}(A)$.
+              \end{itemize}
+    \end{itemize}
+
+    \textbf{\underline{Teoria dell'Informazione}}
+    \begin{itemize}
+        \item \textit{Informazione di un evento}: $i(A)=\log{\frac{1}{P(A)}}$.
+        \item \textit{Informazione di eventi indipendenti}: $A\perp B$, $i(A\cap B)=i(A)+i(B)$.
+        \item \textit{Entropia}: $H(X)=E\left[i(X)\right]=E\left[\log\frac{1}{p_{X}(x)}\right]=E\left[-\log p_{X}(x)\right]=-\sum_{j=i}^{n}p_{X}(x_{j})\log p_{X}(x_{j})\leq \log n$. $H(X)\ge 0\; \forall X$.
+        \item \textit{Diseguaglianza di Jensen}: $\sum_{j=1}^{m}{\lambda_j\log{x_j}}\le\log{\ \sum_{j=1}^{m}{\lambda_jx_j}}$; $\lambda_1,\lambda_2,\ldots,\ \lambda_m:\sum_{j=1}^{m}\lambda_j=1,\ \lambda_j\geq 0$. (Valida in generale per funzioni concave).
+        \item \textit{Diseguaglianza di Kraft-McMillan}: $\sum_{j=1}^{m}{\ 2^{-lj}}\le1$.
+        \item \textit{Codifica di sorgente lossless}: $X$ v.a. con $m$ risultati, per ogni codice prefix-free che usa sequenza $l_j$ bit a risultato $X=x_j\rightarrow\ E\left[L\right]=\sum_{j=1}^{m}{l_jp_X\left(x_j\right)}\geq H\left(X\right)$.
     \end{itemize}
 
 \end{multicols*}

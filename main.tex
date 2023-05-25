@@ -11,7 +11,10 @@
 % Utility per formule.
 \usepackage{mathtools, nccmath}
 \usepackage{amssymb, amsmath}
-
+% Pseudo-codici
+\usepackage{algpseudocode}
+% Funzione indicatrice.
+\usepackage{bbm}
 
 \begin{document}
 % Rimuovo la numerazione delle pagine.
@@ -265,6 +268,54 @@
                             \item allora: $\hat{\Theta}_{LIN}=\frac{\frac{\mu}{\sigma^{2}_{\Theta}}+\sum_{i=i}^{n}\frac{X_{i}}{\sigma^{2}_{i}}}{\sum_{i=1}^{n}\frac{1}{\sigma^{2}_{i}}}$.
                             \item N.B.: Se $X_{i}\sim\mathcal{N}$, allora: $\hat{\Theta}_{LIN}=\hat{\Theta}_{LMS}\sim\mathcal{N}$.
                         \end{itemize}
+              \end{itemize}
+    \end{itemize}
+
+    % Necessario per andare a capo.
+    \hfill \break
+    \textbf{\underline{Stima di Esperimenti Aleatori}}
+    \begin{itemize}
+        \item \textbf{Introduzione}
+              \begin{itemize}
+                  \item Dato un evento $A$ e un esperimento aleatorio, si vuole stimare la probabilità di $P(A)$. Ripetendo $n$ volte l'esperimento (Montecarlo), la media campionaria ottenuta presenta il seguente errore relativo di stima: $MSE=\frac{\sqrt{Var[M_{n}]}}{P(A)}=\frac{1}{\sqrt{n}}\sqrt{\frac{1-P(A)}{P(A)}}$.
+                  \item Dato un generatore di bit (pseudo-)casuali, la loro rappresetazione decimale, su una base opportuna sarà distribuita uniformemente tra $U\sim\mathcal{U}[0,1]$.
+                  \item Data $U\sim\mathcal{U}[0,1]$ voglio campionare da una $X\sim f_{X}$ nota a priori:
+                  \item \textit{Metodo della cumulata inversa}: trovo una $g(u)$ t.c. $\forall u\in [0,1]\; g(u)=F_{X}^{-1}(u)\rightarrow g(U)=X\sim f_{X}$.
+                  \item \textit{App. Campionamento da esponenziale}: $X\sim\mathcal{E}(\lambda)=-\frac{1}{\lambda}\ln{U}$.
+              \end{itemize}
+        \item \textbf{Acceptance-Rejection}
+              \begin{itemize}
+                  \item \textit{Versione "classica"}: $X$ v.a. di legge nota a priori; scelgo un valore $m$ t.c. $m\ge \max{}(f_{X}(x))$.
+                        \begin{algorithmic}[1]
+                            \State $U\sim\mathcal{U}[0,\max{x}(x)]$.
+                            \State $U^{'}\sim\mathcal{U}[0,m]$.
+                            \If{$mU^{'}\leq f_{X}(U)$}
+                            \State Accetto e pongo $X=U$.
+                            \Else
+                            \State Torno a passo 1.
+                            \EndIf
+                        \end{algorithmic}
+                  \item \textit{Versione "generalizzata"}: Voglio trovare un valore di $m\in\mathbb{N}^{+}$ t.c. $mf_{Y}(x)\ge f_{X}(x)\; \forall x\in\mathbb{N}$.
+                        \begin{algorithmic}[1]
+                            \State $Y\sim f_{Y}$.
+                            \State $U\sim\mathcal{U}[0,1]$. ($U\perp Y$).
+                            \If{$mf_{Y}(y)U\leq f_{X}(y)$}
+                            \State Accetto e pongo $X=Y$.
+                            \Else
+                            \State Torno a passo 1.
+                            \EndIf
+                        \end{algorithmic}
+                        \begin{itemize}
+                            \item Se $X\sim\mathcal{N}(0,1)$ mi converrebbe che $Y\sim\mathcal{E}(1)$ e $m=2\sqrt{\frac{e}{2\pi}}$.
+                        \end{itemize}
+                  \item \textit{Efficienza degli algoritmi}: $P\left(U\leq \frac{f_{X}(y)}{mf_{Y}(y)}\right)=\frac{1}{m}$.
+              \end{itemize}
+        \item \textbf{Importance Sampling}
+              \begin{itemize}
+                  \item Voglio stimare $P(A)$, mediante Montecarlo, ma l'evento $A$ è troppo raro e il numero di sample $n$ è ingestibile; oppure, voglio mantenere $n$ invariato ma cercare di abbassare l'errore relativo di stima. Posso l'esperimento aleatorio in modo da aumentare $P(A)$ e, in seguito, traslerò poi le informazioni ottenute al caso originale.
+                  \item $P_{X}(A)=E\left[\mathbbm{1}(X\in A)\right]=E\left[\underbrace{\mathbbm{1}\frac{f_{X}(y)}{f_{Y}(y)}}_{g(Y)}\right]$.
+                  \item $\hat{P_{X}(A)}=\frac{1}{n}\sum_{i=1}^{n}g(y_{i})$.
+                  \item $\hat{P_{X}(A)}\rightarrow^{P} P_{X}(A)$.
               \end{itemize}
     \end{itemize}
 

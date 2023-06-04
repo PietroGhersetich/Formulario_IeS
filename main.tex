@@ -189,13 +189,15 @@
     \begin{itemize}
         \item \textbf{C.L.T.}: Siano $X_{i}$ v.a. i.i.d. con $Var[X_{i}]=\sigma^{2}$ finita e $E[X_{i}]=\mu$. Allora, $S_{n}=X_{1}+X_{2}+...+X_{n}$ è gaussiana per $n\rightarrow\infty$; normalizzando: $Z_{n}=\frac{S_{n}-E[S_{n}]}{\sqrt{Var[S_{n}]}}=\frac{S_{n}-n\mu}{\sigma\sqrt{n}}\sim\mathcal{N}(0,1)$.
         \item \textbf{Problema del sondaggista}: Sia $M_{n}$ una media campionaria di v.a. i.i.d. $X_{i}$ con $E[X_{i}]=\mu$ e $Var[X_{i}]=\sigma^{2}$. Allora, per $n\rightarrow\infty$, $P(|S_{n}-E[S_{n}]|<\alpha)\ge\beta$ è calcolabile come: $P\left(Z<\frac{\alpha\sqrt{n}}{\sigma}\right)\ge\beta$ dove $Z\sim\mathcal{N}(0,1)$.
-        \item \textbf{Th. De Moivre-Laplace}: Sia $X\sim\mathcal{B}(n,p)$, allora $Z_{n}=\frac{X-np}{\sqrt{np(1-p)}}\sim\mathcal{N}(0,1)$ per $n\rightarrow\infty$. Inoltre, $P(a<X<b)\approx\Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)$.
+        \item \textbf{Th. De Moivre-Laplace}: Sia $X\sim\mathcal{B}(n,p)$, allora $Z_{n}=\frac{X-np}{\sqrt{np(1-p)}}\sim\mathcal{N}(0,1)$ per $n\rightarrow\infty$. Inoltre, $P(a<X<b)\approx\Phi\left(\frac{b-np}{\sqrt{np(1-p)}}\right)-\Phi\left(\frac{a-np}{\sqrt{np(1-p)}}\right)$. Se è necessario usare questo metodo per approssimare un coefficiente binomiale, $p=0.5$ risulta comodo.
     \end{itemize}
 
     \textbf{\underline{Processi Casuali}}
     \begin{itemize}
         \item \textbf{Proc. di Bernoulli}: $BP(p)$ è una serie di v.a. i.i.d. $X_{i}\sim Bern(p)$.
               \begin{itemize}
+                  \item \textit{Tempo di arrivo}: Discreto.
+                  \item \textit{Rate degli arrivi}: $p/\text{prova}$.
                   \item \textit{Numero di successi (arrivi) $S$ in $n$ istanti temporali}: $S\sim\mathcal{B}(n,p)$.
                   \item \textit{Tempo di interarrivo}: $T_{i}\sim\mathcal{G}(p)$. Tutti i tempi di interarrivo sono indipendenti e godono di perdita di memoria.
                   \item \textit{Tempo al $k$-esimo arrivo}: $Y_{k}=T_{1}+T_{2}+...+T_{k}$. $Y_{k}\sim Pascal(p)$ v.a. di Pascal.
@@ -209,6 +211,8 @@
               \end{itemize}
         \item \textbf{Proc. di Poisson}: $PP(\lambda)$ è la versione continua dei B.P.
               \begin{itemize}
+                  \item \textit{Tempo di arrivo}: Continuo.
+                  \item \textit{Rate degli arrivi}: $\lambda/\text{unità di tempo}$.
                   \item \textit{Probabilità di avere $k$ arrivi nell'intervallo $[0, \tau]$}:  $N[0, \tau]\sim Poisson(\lambda\tau)$ è una v.a. di Poisson.
                         \begin{itemize}
                             \item $P(N[0, \tau]=k)=\begin{cases}

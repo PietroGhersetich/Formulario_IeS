@@ -235,6 +235,19 @@
                   \item \textit{Merging di due P.P.}: $PP(\lambda_{1})\wedge PP(\lambda_{2})\rightarrow PP(\lambda_{1}+\lambda_{2})$.
                   \item \textit{Incidenza casuale per P.P.} Dato un P.P. iniziato da un tempo indefinito, il tempo tra due arrivi è una $Erlang-2(\lambda)$.
               \end{itemize}
+        \item Relazione Bernoulli/Poisson:
+        
+                \begin{tabular}{ |c|c|c| } 
+                 \hline
+                  & Poisson & Bernoulli \\ 
+                 \hline
+                 Tempo di arrivo & Continuo & Discreto \\ 
+                 Rate degli arrivi & $\lambda$/unità di tempo & $p$/per prova \\
+                 Ddp del numero di arrivi & $Poisson(\lambda t)$ & $Bin(n,p)$ \\
+                 Ddp del tempo di interarrivo & $Exp(\lambda)$ & $Geom(p)$ \\
+                 Ddp del tempo al k-esimo arrivo & $Erlang$-$k(\lambda)$ & $Pascal$-$k(p)$ \\
+                 \hline
+                \end{tabular}
     \end{itemize}
 
     \textbf{\underline{Stima Bayesiana}}

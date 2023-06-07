@@ -252,12 +252,11 @@
 
     \textbf{\underline{Stima Bayesiana}}
     \begin{itemize}
-        \item A partire da una v.a. $X$, che rappresenta l'esito di una misura, si vuole stimare, mediante la regola di Bayes, $\Theta$ (v.a.) quantità da misurare: 
-        \begin{itemize}
-            \item $f_{\Theta|X}(\theta|X)=\frac{f_{X|\Theta}(x|\theta)f_{\Theta}(\theta)}{f_{X}(x)}$
-            \item $f_{X}(x)=\int_{\mathbf{R}}f_{X|\Theta}(x|\theta')f_{\Theta}(\theta')d\theta'$
-        \end{itemize}
-        
+        \item A partire da una v.a. $X$, che rappresenta l'esito di una misura, si vuole stimare, mediante la regola di Bayes, $\Theta$ (v.a.) quantità da misurare:
+              \begin{itemize}
+                  \item $f_{\Theta|X}(\theta|X)=\frac{f_{X|\Theta}(x|\theta)f_{\Theta}(\theta)}{f_{X}(x)}$.
+                  \item $f_{X}(x)=\int_{\mathbf{R}}f_{X|\Theta}(x|\theta')f_{\Theta}(\theta')d\theta'$.
+              \end{itemize}
         \item \textbf{Stimatore "M.A.P."}:
               \begin{itemize}
                   \item $\hat{\Theta}_{MAP}=\begin{cases}
@@ -270,17 +269,16 @@
               \begin{itemize}
                   \item $\hat{\Theta}_{LMS}=E[\Theta]\rightarrow\hat{\Theta}_{LMS}(X)=E[\Theta|X]$.
                   \item \textit{M.S.E.}: $error(\hat{\Theta}_{LMS})=E[(\Theta-\hat{\Theta}_{LMS})^{2}]=Var[\Theta]$.
-                  \item min eqm: $E[(\Theta-E[\Theta|X])^{2}]=E[Var[\Theta|X]]\leq Var[\Theta]$.
+                  \item Min E.Q.M.: $E[(\Theta-E[\Theta|X])^{2}]=E[Var[\Theta|X]]\leq Var[\Theta]$.
                   \item $Var[\Theta]=E[Var[\Theta|X]]+Var[E[\Theta|X]]\ge E[Var[\Theta|X]]$.
                   \item \textit{Proprietà}:
                         \begin{itemize}
-                            \item errore di stima: $\Theta=\hat{\Theta}_{LMS}-\widetilde{\Theta}$, $E[\widetilde{\Theta}]=0$ (LMA a-polarizzata: nè sottostimiamo, nè sovrastimiamo $\Theta$). \newline Per qualunque $h(X)$ deterministica: $E[\Tilde{\Theta}\cdot h(X)]=0$.
+                            \item Errore di stima: $\Theta=\hat{\Theta}_{LMS}-\widetilde{\Theta}$, $E[\widetilde{\Theta}]=0$ (LMA a-polarizzata: nè sottostimiamo, nè sovrastimiamo $\Theta$). \newline Per qualunque $h(X)$ deterministica: $E[\Tilde{\Theta}\cdot h(X)]=0$.
                             \item $Cov[\widetilde{\Theta}, \hat{\Theta}_{LMS}]=0$.
-                            \item $Var[\widetilde{\Theta}]=E[Var[\Theta|X]]$
+                            \item $Var[\widetilde{\Theta}]=E[Var[\Theta|X]]$.
                         \end{itemize}
               \end{itemize}
         \item \textbf{Stimatore "L.M.S." lineare}:
-            $\newline$
               \begin{itemize}
                   \item $\hat{\Theta}_{LIN}(X)=E[\Theta]+\frac{Cov[X, \Theta]}{Var[X]}(X-E[X]). \newline \newline$
                   \item $Standardizz.: \frac{\hat{\Theta}_{LIN}(X)-E[\Theta]}{\sigma_{\Theta}}=\frac{Cov[X,\Theta]}{\sigma_{X}\sigma_{\Theta}}\frac{X-E[X]}{\sigma_{X}}$.
@@ -295,13 +293,11 @@
               \end{itemize}
     \end{itemize}
 
-    % Necessario per andare a capo.
-    \hfill \break
     \textbf{\underline{Simulazione numerica di Esperimenti Aleatori}}
     \begin{itemize}
         \item \textbf{Introduzione}
               \begin{itemize}
-                  \item Dato un evento $A$ e un esperimento aleatorio, si vuole stimare la probabilità di $P(A)$. Ripetendo $n$ volte l'esperimento (Montecarlo), la media campionaria ottenuta presenta il seguente errore relativo di stima MSE: $\newline \frac{\sqrt{Var[M_{n}]}}{P(A)}=\frac{1}{\sqrt{n}}\sqrt{\frac{1-P(A)}{P(A)}}\leq^{!}\varepsilon$ e dunque $n \geq^{!}\frac{1}{\varepsilon}\frac{1-P(A)}{P(A)}$
+                  \item Dato un evento $A$ e un esperimento aleatorio, si vuole stimare la probabilità di $P(A)$. Ripetendo $n$ volte l'esperimento (Montecarlo), la media campionaria ottenuta presenta il seguente errore relativo di stima MSE: \newline $\frac{\sqrt{Var[M_{n}]}}{P(A)}=\frac{1}{\sqrt{n}}\sqrt{\frac{1-P(A)}{P(A)}}\leq^{!}\varepsilon$ e dunque $n \geq^{!}\frac{1}{\varepsilon}\frac{1-P(A)}{P(A)}$.
                   \item Dato un generatore di bit (pseudo-)casuali, la loro rappresetazione decimale, su una base opportuna sarà distribuita uniformemente tra $U\sim\mathcal{U}[0,1]$.
                   \item Data $U\sim\mathcal{U}[0,1]$ voglio campionare da una $X\sim f_{X}$ nota a priori:
                   \item \textit{Metodo della cumulata inversa}: calcolo $F_{X}(x)$ e $F_{X}^{-1}$ ponendo $F_{X}^{-1} = u$ e ricavando $x \rightarrow X = F_{X}^{-1}(U) \sim f_{X}(x)$.
@@ -311,8 +307,8 @@
               \begin{itemize}
                   \item \textit{Versione "classica"}: $X$ v.a. di legge nota a priori; scelgo un valore $m$ t.c. $m\ge \max{}(f_{X}(x))$.
                         \begin{algorithmic}[1]
-                            \State genero $U\sim\mathcal{U}[0,\max{x}(x)]$ (ascissa)
-                            \State genero $U^{'}\sim\mathcal{U}[0,1]$ in modo indipendente da $U$.
+                            \State Genero $U\sim\mathcal{U}[0,\max{x}(x)]$ (ascissa).
+                            \State Genero $U^{'}\sim\mathcal{U}[0,1]$ in modo indipendente da $U$.
                             \If{$mU^{'}\leq f_{X}(U)$}
                             \State Accetto e pongo $X=U$.
                             \Else
@@ -321,8 +317,8 @@
                         \end{algorithmic}
                   \item \textit{Versione "generalizzata"}: Voglio trovare un valore di $m\in\mathbb{N}^{+}$ t.c. $mf_{Y}(x)\ge f_{X}(x)\; \forall x\in\mathbb{N}$.
                         \begin{algorithmic}[1]
-                            \State genero $Y\sim f_{Y}$.
-                            \State genero $U^{'}\sim\mathcal{U}[0,1]$. ($U^{'}\perp Y$).
+                            \State Genero $Y\sim f_{Y}$.
+                            \State Genero $U^{'}\sim\mathcal{U}[0,1]$. ($U^{'}\perp Y$).
                             \If{$mf_{Y}(y)U^{'}\leq f_{X}(y)$}
                             \State Accetto e pongo $X=Y$.
                             \Else
@@ -330,42 +326,39 @@
                             \EndIf
                         \end{algorithmic}
                         \begin{itemize}
-                            \item Se $X\sim\mathcal{N}(0,1)$ mi converrebbe che $Y\sim\mathcal{E}(1)$ e $m=2\sqrt{\frac{e}{2\pi}}$.
-                            Condizione di acceptance: $U^{'}\leq \frac{f_{|Z|}(Y)}{mf_{Y}(Y)}=\exp{(-\frac{(Y-1)^{2}}{2})}$, ricorda di generare S: funzione segno.
-                            \item Per $X\sim\mathcal{N}(\mu,\sigma^{2})$ campiono da $Z\sim\mathcal{N}(0,1)$ e pongo $X=\sigma Z+\mu$
+                            \item Se $X\sim\mathcal{N}(0,1)$ mi converrebbe che $Y\sim\mathcal{E}(1)$ e $m=2\sqrt{\frac{e}{2\pi}}$. \newline
+                                  Condizione di acceptance: $U^{'}\leq \frac{f_{|Z|}(Y)}{mf_{Y}(Y)}=\exp{(-\frac{(Y-1)^{2}}{2})}$, ricorda di generare $S$: funzione segno.
+                            \item Per $X\sim\mathcal{N}(\mu,\sigma^{2})$ campiono da $Z\sim\mathcal{N}(0,1)$ e pongo $X=\sigma Z+\mu$.
                         \end{itemize}
-                  \item \textit{Efficienza degli algoritmi}: $P\left(U\leq \frac{f_{X}(y)}{mf_{Y}(y)}\right)=\frac{1}{m}\newline$.
-                  Oss: N: numero prove fino a generare un x valido, $N\sim\mathcal{G}(t)$ con t: prob. di acceptance per la singola prova $t=1/m\newline \newline$ %per allineamento
+                  \item \textit{Efficienza degli algoritmi}: $P\left(U\leq \frac{f_{X}(y)}{mf_{Y}(y)}\right)=\frac{1}{m}$. \newline
+                        Oss: $N$: numero prove fino a generare un $x$ valido, $N\sim\mathcal{G}(t)$ con $t$: prob. di acceptance per la singola prova $t=1/m$.
               \end{itemize}
         \item \textbf{Stima Monte Carlo}
               \begin{itemize}
                   \item Sia $g(X)$ una qualsiasi statistica di $X$, voglio stimare $E[g(X)]=\int_{-\infty}^{+\infty}g(x)f_X(x)dx$.
-                  \item per fare ciò uso la media campionaria $\hat{G_{n}}=\frac{1}{n}\sum_{i=1}^{n}g(x_{i})$ che grazie alla LLN: $\hat{G_{n}} \rightarrow^{P}E[\hat{G_{n}}]=E[g(x)]$
+                  \item Per fare ciò uso la media campionaria $\hat{G_{n}}=\frac{1}{n}\sum_{i=1}^{n}g(x_{i})$ che grazie alla L.L.N.: $\hat{G_{n}} \rightarrow^{P}E[\hat{G_{n}}]=E[g(x)]$.
                   \item Algoritmo:
                         \begin{algorithmic}[1]
-                            \State genero $X_{i}\sim f_{X}$ con $ i=1,...,n$ in maniera indipendente.
-                            \State calcolo $\hat{G_{n}}=\frac{1}{n}\sum_{i=1}^{n}g(x_{i})$
+                            \State Genero $X_{i}\sim f_{X}$ con $i=1,...,n$ in maniera indipendente.
+                            \State Calcolo $\hat{G_{n}}=\frac{1}{n}\sum_{i=1}^{n}g(x_{i})$.
                         \end{algorithmic}
-                  \item Errore relativo di stima: visto nell'introduzione, noto che per eventi rari n schizza a valori enormi.
-                  \item Calcolo di integrali: possiamo usare una stima Monte Carlo per il calcolo degli integrali complessi:
-
-                  $I=\int_{D}g(t)dt=\int_{D}\frac{g(t)}{f_{X}(t)}f_{X}(t)dt=E[\frac{g(X)}{f_{X}(X)}]$.
-
-                  Stimo dunque $\hat{I}=\frac{1}{n}\sum_{i=1}^{n}\frac{g(X_{i})}{f_{X}(X_{i})}$ che per la LLN tenderà in prob. a I.
+                  \item Errore relativo di stima: visto nell'introduzione, noto che per eventi rari $n$ schizza a valori enormi.
+                  \item Calcolo di integrali: possiamo usare una stima Monte Carlo per il calcolo degli integrali complessi: \newline
+                        $I=\int_{D}g(t)dt=\int_{D}\frac{g(t)}{f_{X}(t)}f_{X}(t)dt=E[\frac{g(X)}{f_{X}(X)}]$. \newline
+                        Stimo dunque $\hat{I}=\frac{1}{n}\sum_{i=1}^{n}\frac{g(X_{i})}{f_{X}(X_{i})}$ che per la L.L.N. tenderà in prob. a I.
               \end{itemize}
         \item \textbf{Importance Sampling}
               \begin{itemize}
                   \item Voglio stimare $P(A)$, mediante Montecarlo, ma l'evento $A$ è troppo raro e il numero di sample $n$ è ingestibile; oppure, voglio mantenere $n$ invariato ma cercare di abbassare l'errore relativo di stima. Posso modificare l'esperimento aleatorio in modo da aumentare $P(A)$ e, in seguito, traslerò poi le informazioni ottenute al caso originale.
-                  \item $P_{X}(A)=E\left[\mathbbm{1}(X\in A)\right]=E\left[\mathbbm{1}(Y\in A)\frac{f_{X}(y)}{f_{Y}(y)}\right]$.
+                  \item $P_{X}(A)=E\left[\mathbbm{1}(X\in A)\right]=E\left[{\mathbbm{1}(Y\in A)\frac{f_{X}(y)}{f_{Y}(y)}}\right]$.
                   \item Algoritmo:
-                  \begin{algorithmic}[1]
-                            \State genero $Y_{i}\sim f_{Y}$ iid.
-                            \State calcolo $\hat{P_{X}(A)}=\frac{1}{n}\sum_{i=1}^{n}\mathbbm{1}(Y_{i}\in A)\frac{f_{X}(y_{i})}{f_{Y}(y_{i})}$
+                        \begin{algorithmic}[1]
+                            \State Genero $Y_{i}\sim f_{Y}$ i.i.d.
+                            \State Calcolo $\hat{P_{X}(A)}=\frac{1}{n}\sum_{i=1}^{n}\mathbbm{1}(Y_{i}\in A)\frac{f_{X}(y_{i})}{f_{Y}(y_{i})}$
                         \end{algorithmic}
-                  \item Varianza della stima:
-                  $\newline Var[\hat{P_{X}(A)}]=\frac{1}{n}(E[\mathbbm{1}(X\in A)\frac{f_{X}(x)}{f_{Y}(x)}]-(P_{X}(A))^{2})$.
-                  
-                  Noto che devo scegliere $f_{Y}(x)$ molto simile a $\mathbbm{1}(X\in A)f_{X}(x)$ per abbassare la varianza della stima.
+                  \item Varianza della stima: \newline
+                        $Var[\hat{P_{X}(A)}]=\frac{1}{n}(E[\mathbbm{1}(X\in A)\frac{f_{X}(x)}{f_{Y}(x)}]-(P_{X}(A))^{2})$. \newline
+                        Noto che devo scegliere $f_{Y}(x)$ molto simile a $\mathbbm{1}(X\in A)f_{X}(x)$ per abbassare la varianza della stima.
               \end{itemize}
     \end{itemize}
 

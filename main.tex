@@ -219,7 +219,7 @@
                             \item $\sum_{k=0}^{+\infty}P_{N[0,\tau]}(k)=1$.
                         \end{itemize}
                   \item \textit{Tempo di interarrivo}: $T_{i}\sim\mathcal{E}(p)$. Tutti i tempi di interarrivo sono indipendenti e godono di perdita di memoria.
-                  \item \textit{Distribuzione del tempo al $k$-esimo arrivo}: $Y_{k}\sim Erlang-k(\lambda)$, ossia una somma di k esponenziali (interarrivi).
+                  \item \textit{Distribuzione del tempo al $k$-esimo arrivo}: $Y_{k}\sim Erlang-k(\lambda)$, ossia una somma di $k$ esponenziali (interarrivi).
                         \begin{itemize}
                             \item $f_{Y_{k}}(t)=\begin{cases}
                                           \frac{(\lambda t)^{k-1}}{(k-1)!}e^{-\lambda t}\lambda & t>0, k\ge 1 \\
@@ -229,21 +229,21 @@
                         \end{itemize}
                   \item \textit{Splitting di un P.P.}: $PP(\lambda)\rightarrow PP(\lambda q)\wedge PP(\lambda(1-q))$.
                   \item \textit{Merging di due P.P.}: $PP(\lambda_{1})\wedge PP(\lambda_{2})\rightarrow PP(\lambda_{1}+\lambda_{2})$.
-                  \item \textit{Incidenza casuale per P.P.} Dato un P.P. iniziato da un tempo indefinito t, il tempo tra l'arrivo precedente a t e quello successivo è una $Erlang-2(\lambda)$.
+                  \item \textit{Incidenza casuale per P.P.} Dato un P.P. iniziato da un tempo indefinito $t$, il tempo tra l'arrivo precedente a $t$ e quello successivo è una $Erlang-2(\lambda)$.
               \end{itemize}
         \item Relazione Bernoulli/Poisson:
-        
-                \begin{tabular}{ |c|c|c| } 
-                 \hline
-                  & Poisson & Bernoulli \\ 
-                 \hline
-                 Tempo di arrivo & Continuo & Discreto \\ 
-                 Rate degli arrivi & $\lambda$/unità di tempo & $p$/per prova \\
-                 Ddp del numero di arrivi & $Poisson(\lambda t)$ & $Bin(n,p)$ \\
-                 Ddp del tempo di interarrivo & $Exp(\lambda)$ & $Geom(p)$ \\
-                 Ddp del tempo al k-esimo arrivo & $Erlang$-$k(\lambda)$ & $Pascal$-$k(p)$ \\
-                 \hline
-                \end{tabular}
+
+              \begin{tabular}{ |c|c|c| }
+                  \hline
+                                                  & Poisson                  & Bernoulli       \\
+                  \hline
+                  Tempo di arrivo                 & Continuo                 & Discreto        \\
+                  Rate degli arrivi               & $\lambda$/unità di tempo & $p$/per prova   \\
+                  Ddp del numero di arrivi        & $Poisson(\lambda t)$     & $Bin(n,p)$      \\
+                  Ddp del tempo di interarrivo    & $Exp(\lambda)$           & $Geom(p)$       \\
+                  Ddp del tempo al k-esimo arrivo & $Erlang$-$k(\lambda)$    & $Pascal$-$k(p)$ \\
+                  \hline
+              \end{tabular}
     \end{itemize}
 
     \textbf{\underline{Stima Bayesiana}}
@@ -276,7 +276,7 @@
               \end{itemize}
         \item \textbf{Stimatore "L.M.S." lineare}:
               \begin{itemize}
-                  \item $\hat{\Theta}_{LIN}(X)=E[\Theta]+\frac{Cov[X, \Theta]}{Var[X]}(X-E[X]).$
+                  \item $\hat{\Theta}_{LIN}(X)=E[\Theta]+\frac{Cov[X, \Theta]}{Var[X]}(X-E[X])$.
                   \item $Standardizz.: \frac{\hat{\Theta}_{LIN}(X)-E[\Theta]}{\sigma_{\Theta}}=\frac{Cov[X,\Theta]}{\sigma_{X}\sigma_{\Theta}}\frac{X-E[X]}{\sigma_{X}}$.
                   \item \textit{M.S.E. lineare}: $MSE=E[(\Theta-\hat{\Theta}_{LIN})^2]=(1-\rho^{2}[X,\Theta])Var[\Theta]=(1-\frac{Cov^{2}[X,\Theta]}{Var[X]Var[\Theta]})Var[\Theta]$.
                   \item \textit{Costruzione di LMS lineare con osservazioni multiple}: $\hat{\Theta}_{LIN}=a_{1}X_{1}+a_{2}X_{2}+...+a_{n}X_{n}+b$.
@@ -288,12 +288,12 @@
                         \end{itemize}
               \end{itemize}
         \item \textbf{Stima di $\Theta \sim \mathbf{N}(X_{0},\sigma_{0}^{2})$ con $[X_{i}|\Theta=\theta]\sim \mathbf{N}(\theta, \sigma_{i}^{2})$}:
-            \begin{itemize}
-                \item Quando tutte le V.A sono Gaussiane ($X$ e $\Theta$): 
+              \begin{itemize}
+                  \item Quando tutte le V.A sono Gaussiane ($X$ e $\Theta$):
 
-                $\hat{\Theta}_{MAP}=\hat{\Theta}_{LMS}=\hat{\Theta}_{LIN}=m$
-                \item $m=\frac{\sum_{i=0}^{n}\frac{X_{i}}{\sigma_{i}^{2}}}{\sum_{i=0}^{n}\frac{1}{\sigma_{i}^{2}}}$
-            \end{itemize}
+                        $\hat{\Theta}_{MAP}=\hat{\Theta}_{LMS}=\hat{\Theta}_{LIN}=m$
+                  \item $m=\frac{\sum_{i=0}^{n}\frac{X_{i}}{\sigma_{i}^{2}}}{\sum_{i=0}^{n}\frac{1}{\sigma_{i}^{2}}}$
+              \end{itemize}
     \end{itemize}
 
     \textbf{\underline{Simulazione numerica di Esperimenti Aleatori}}
@@ -372,7 +372,7 @@
         \item \textit{Diseguaglianza di Kraft-McMillan}: Posso trovare un codice prefix-free composto da m codewords con lunghezze $l_{j}$ $\sum_{j=1}^{m}{\ 2^{-lj}}\le1$.
         \item \textit{Codifica di sorgente lossless}: $X$ v.a. con $m$ risultati, per ogni codice prefix-free che usa sequenza $l_j$ bit a risultato $X=x_j\rightarrow\ E\left[L\right]=\sum_{j=1}^{m}{l_jp_X\left(x_j\right)}\geq H\left(X\right)$.
 
-        Dunque la lunghezza media minima raggiungibile è l'Entropia (raggiungibile ad esempio con n prove in modo da poter codificare più lanci insieme, non con 1 sola).
+              Dunque la lunghezza media minima raggiungibile è l'entropia (raggiungibile ad esempio con $n$ prove in modo da poter codificare più lanci insieme, non con 1 sola).
 
         \item Con una prova sola la minima lunghezza per rappresentare uno dei risultati è $H(X)$ approssimata per eccesso al primo intero.
 
